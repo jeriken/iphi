@@ -1,0 +1,3 @@
+ci(database): changes badaso_users table to unhidden
+build(badaso): add post-module "https://github.com/uasoft-indonesia/badaso-post-module"
+refactor(code): move "/code" into main folder
