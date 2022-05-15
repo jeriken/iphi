@@ -43,7 +43,7 @@ class HalamanCRUDDataRowAdded extends Seeder
                 array (
                     'data_type_id' => $data_type->id,
                     'field' => 'users_id',
-                    'type' => 'relation',
+                    'type' => 'hidden',
                     'display_name' => 'Users Id',
                     'required' => 1,
                     'browse' => 1,
@@ -52,7 +52,7 @@ class HalamanCRUDDataRowAdded extends Seeder
                     'add' => 1,
                     'delete' => 1,
                     'details' => '{}',
-                    'relation' => '{"relation_type":"belongs_to","destination_table":"badaso_users","destination_table_column":"id","destination_table_display_column":"id"}',
+                    'relation' => NULL,
                     'order' => 2,
                 ),
                 2 => 

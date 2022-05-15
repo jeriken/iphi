@@ -36,7 +36,7 @@ class HalamanCRUDDataTypeAdded extends Seeder
                 'icon' => NULL,
                 'model_name' => NULL,
                 'policy_name' => NULL,
-                'controller' => NULL,
+                'controller' => 'App\\Http\\Controllers\\HalamanController',
                 'order_column' => NULL,
                 'order_display_column' => NULL,
                 'order_direction' => NULL,
@@ -48,7 +48,7 @@ class HalamanCRUDDataTypeAdded extends Seeder
                 'notification' => '[]',
                 'is_soft_delete' => false,
                 'created_at' => '2022-05-11T04:30:59.000000Z',
-                'updated_at' => '2022-05-11T04:48:17.000000Z',
+                'updated_at' => '2022-05-15T05:31:10.000000Z',
             ));
 
             Badaso::model('Permission')->generateFor('halaman');

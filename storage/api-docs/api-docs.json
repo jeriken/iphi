@@ -15,7 +15,7 @@
     },
     "servers": [
         {
-            "url": "http://code.test/badaso-api",
+            "url": "http://127.0.0.1/badaso-api",
             "description": "Development Server"
         }
     ],
