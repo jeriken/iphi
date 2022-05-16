@@ -1,5 +1,3 @@
-🎨 style(halaman): custom "browse" base code
-🎨 style(halaman): custom "add" base code
-🎨 style(halaman): custom "edit" base code
-⚡ feat(halaman): added autofill slug on "add" pages
-🐛 fix(halaman): remove auto add slug on controller
+✨ feat(widget): add post widget
+✨ feat(widget): add comment widget
+✨ feat(widget): add category

@@ -16,6 +16,9 @@ return [
         ['value' => 'adminPanel', 'label' => 'Admin Panel'],
     ],
     'widgets' => [
+        'App\\Widgets\\PostWidget',
+        'App\\Widgets\\CommentWidget',
+        'App\\Widgets\\CategoryWidget',
         'Uasoft\\Badaso\\Widgets\\UserWidget',
         'Uasoft\\Badaso\\Widgets\\RoleWidget',
         'Uasoft\\Badaso\\Widgets\\PermissionWidget',
