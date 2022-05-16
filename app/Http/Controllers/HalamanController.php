@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use ReflectionClass;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Uasoft\Badaso\Helpers\ApiResponse;
@@ -13,7 +15,7 @@ use Uasoft\Badaso\Controllers\BadasoBaseController;
 
 class HalamanController extends BadasoBaseController
 {
-
+    
     public function edit(Request $request)
     {
         DB::beginTransaction();
@@ -73,8 +75,6 @@ class HalamanController extends BadasoBaseController
             // get data from request
             $data = $request->input('data');
             $data['users_id'] = auth()->user()->id;
-            $slug = "/halaman/" . $data['slug'];
-            $data['slug'] = $slug;
 
             // validate and store data to table
             $this->validateData($data, $data_type);

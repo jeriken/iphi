@@ -1,5 +1,5 @@
-♻️ refactor(badaso): overiding existing pages
-♻️ refactor(badaso): overiding 'halaman' pages
-♻️ refactor(badaso): overiding 'halaman' controller
-🐛 fix(halaman): change users_id method into hidden
-🐛 fix(halaman): slug /halaman is have added fill
+🎨 style(halaman): custom "browse" base code
+🎨 style(halaman): custom "add" base code
+🎨 style(halaman): custom "edit" base code
+⚡ feat(halaman): added autofill slug on "add" pages
+🐛 fix(halaman): remove auto add slug on controller
