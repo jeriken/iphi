@@ -122,136 +122,130 @@
                 :description-body="$t('crudGenerated.footer.descriptionBody')"
                 multiple
               >
-
-              <template slot="thead">
-                <badaso-th sort-key="title">
-                  Judul
-                </badaso-th>
-                <badaso-th sort-key="author">
-                  Penulis
-                </badaso-th>
-                <badaso-th sort-key="category">
-                  Tanggal
-                </badaso-th>
-                <badaso-th sort-key="tags">
-                  Status
-                </badaso-th>
-                <vs-th> Action </vs-th>
-              </template>
-              <template slot-scope="{ data }">
-                <vs-tr :data="rec" :key="index" v-for="(rec, index) in records">
-                  <vs-td :data="rec.judul">
-                    {{ rec.judul }}
-                  </vs-td>
-                  <vs-td :data="rec.usersId">
-                    {{ rec.usersId }}
-                  </vs-td>
-                  <vs-td :data="rec.createdAt">
-                    {{ rec.createdAt }}
-                  </vs-td>
-                  <vs-td :data="rec.status">
-                    {{ rec.status }}
-                  </vs-td>
-                  <vs-td class="crud-generated__button">
-                        <badaso-dropdown vs-trigger-click>
-                          <vs-button
-                            size="large"
-                            type="flat"
-                            icon="more_vert"
-                          ></vs-button>
-                          <vs-dropdown-menu>
-                            <badaso-dropdown-item
-                              :href="getUrlPost(rec.slug)"
-                              target='_blank'
-                              v-if="
-                                isCanRead &&
-                                $helper.isAllowedToModifyGeneratedCRUD(
-                                  'read',
-                                  dataType.name
-                                ) &&
-                                !isShowDataRecycle
-                              "
-                              icon="visibility"
-                            >
-                              View
-                            </badaso-dropdown-item>
-                            <badaso-dropdown-item
-                              :to="{
-                                name: 'CrudGeneratedRead',
-                                params: {
-                                  id: rec.id,
-                                  slug: $route.params.slug,
-                                },
-                              }"
-                              v-if="
-                                isCanRead &&
-                                $helper.isAllowedToModifyGeneratedCRUD(
-                                  'read',
-                                  dataType.name
-                                ) &&
-                                !isShowDataRecycle
-                              "
-                              icon="visibility"
-                            >
-                              Detail
-                            </badaso-dropdown-item>
-                            <badaso-dropdown-item
-                              :to="{
-                                name: 'CrudGeneratedEdit',
-                                params: {
-                                  id: rec.id,
-                                  slug: $route.params.slug,
-                                },
-                              }"
-                              v-if="
-                                isCanEdit &&
-                                $helper.isAllowedToModifyGeneratedCRUD(
-                                  'edit',
-                                  dataType
-                                ) &&
-                                !isShowDataRecycle
-                              "
-                              icon="edit"
-                            >
-                              Edit
-                            </badaso-dropdown-item>
-                            <badaso-dropdown-item
-                              icon="delete"
-                              @click="confirmDelete(rec.id)"
-                              v-if="
-                                !idsOfflineDeleteRecord.includes(
-                                  rec.id.toString()
-                                ) &&
-                                $helper.isAllowedToModifyGeneratedCRUD(
-                                  'delete',
-                                  dataType
-                                )
-                              "
-                            >
-                              Delete
-                            </badaso-dropdown-item>
-                            <badaso-dropdown-item
-                              @click="confirmDeleteDataPending(rec.id)"
-                              icon="delete_outline"
-                              v-if="
-                                idsOfflineDeleteRecord.includes(
-                                  rec.id.toString()
-                                ) && !isShowDataRecycle
-                              "
-                            >
-                              {{
-                                $t(
-                                  "offlineFeature.crudGenerator.deleteDataPending"
-                                )
-                              }}
-                            </badaso-dropdown-item>
-                          </vs-dropdown-menu>
-                        </badaso-dropdown>
-                      </vs-td>
-                </vs-tr>
-              </template>
-
-
+                <template slot="thead">
+                  <badaso-th sort-key="title"> Judul </badaso-th>
+                  <badaso-th sort-key="author"> Penulis </badaso-th>
+                  <badaso-th sort-key="category"> Tanggal </badaso-th>
+                  <badaso-th sort-key="tags"> Status </badaso-th>
+                  <vs-th> Action </vs-th>
+                </template>
+                
+                <template slot-scope="{ data }">
+                  <vs-tr
+                    :data="rec"
+                    :key="index"
+                    v-for="(rec, index) in records"
+                  >
+                    <vs-td :data="rec.judul">
+                      {{ rec.judul }}
+                    </vs-td>
+                    <vs-td :data="rec.usersId">
+                      {{ rec.usersId }}
+                    </vs-td>
+                    <vs-td :data="rec.createdAt">
+                      {{ rec.createdAt }}
+                    </vs-td>
+                    <vs-td :data="rec.status">
+                      {{ rec.status }}
+                    </vs-td>
+                    <vs-td class="crud-generated__button">
+                      <badaso-dropdown vs-trigger-click>
+                        <vs-button
+                          size="large"
+                          type="flat"
+                          icon="more_vert"
+                        ></vs-button>
+                        <vs-dropdown-menu>
+                          <badaso-dropdown-item
+                            :href="getUrlPost(rec.slug)"
+                            target="_blank"
+                            v-if="
+                              isCanRead &&
+                              $helper.isAllowedToModifyGeneratedCRUD(
+                                'read',
+                                dataType.name
+                              ) &&
+                              !isShowDataRecycle
+                            "
+                            icon="visibility"
+                          >
+                            View
+                          </badaso-dropdown-item>
+                          <badaso-dropdown-item
+                            :to="{
+                              name: 'CrudGeneratedRead',
+                              params: {
+                                id: rec.id,
+                                slug: $route.params.slug,
+                              },
+                            }"
+                            v-if="
+                              isCanRead &&
+                              $helper.isAllowedToModifyGeneratedCRUD(
+                                'read',
+                                dataType.name
+                              ) &&
+                              !isShowDataRecycle
+                            "
+                            icon="visibility"
+                          >
+                            Detail
+                          </badaso-dropdown-item>
+                          <badaso-dropdown-item
+                            :to="{
+                              name: 'CrudGeneratedEdit',
+                              params: {
+                                id: rec.id,
+                                slug: $route.params.slug,
+                              },
+                            }"
+                            v-if="
+                              isCanEdit &&
+                              $helper.isAllowedToModifyGeneratedCRUD(
+                                'edit',
+                                dataType
+                              ) &&
+                              !isShowDataRecycle
+                            "
+                            icon="edit"
+                          >
+                            Edit
+                          </badaso-dropdown-item>
+                          <badaso-dropdown-item
+                            icon="delete"
+                            @click="confirmDelete(rec.id)"
+                            v-if="
+                              !idsOfflineDeleteRecord.includes(
+                                rec.id.toString()
+                              ) &&
+                              $helper.isAllowedToModifyGeneratedCRUD(
+                                'delete',
+                                dataType
+                              )
+                            "
+                          >
+                            Delete
+                          </badaso-dropdown-item>
+                          <badaso-dropdown-item
+                            @click="confirmDeleteDataPending(rec.id)"
+                            icon="delete_outline"
+                            v-if="
+                              idsOfflineDeleteRecord.includes(
+                                rec.id.toString()
+                              ) && !isShowDataRecycle
+                            "
+                          >
+                            {{
+                              $t(
+                                "offlineFeature.crudGenerator.deleteDataPending"
+                              )
+                            }}
+                          </badaso-dropdown-item>
+                        </vs-dropdown-menu>
+                      </badaso-dropdown>
+                    </vs-td>
+                  </vs-tr>
+                </template>
               </badaso-table>
               <div v-else>
                 <badaso-server-side-table
@@ -726,9 +720,9 @@ export default {
           slug: this.$route.params.slug,
         });
         this.$closeLoader();
-        this.data = response.data; 
+        this.data = response.data;
         this.records = response.data.data;
-        console.log(this.records)
+        console.log(this.records);
         this.totalItem =
           response.data.total > 0
             ? Math.ceil(response.data.total / this.limit)
@@ -742,7 +736,7 @@ export default {
           return data;
         });
         this.dataType.dataRows = JSON.parse(JSON.stringify(dataRows));
-        this.dataType.dataRows[1].displayName = "Penulis"
+        this.dataType.dataRows[1].displayName = "Penulis";
         const addFields = dataRows.filter((row) => row.add == 1);
         const editFields = dataRows.filter((row) => row.edit == 1);
         const readFields = dataRows.filter((row) => row.read == 1);
@@ -1043,7 +1037,7 @@ export default {
       await this.getEntity();
     },
     getUrlPost(urlPath = "") {
-      let MIX_FRONTEND_URL = process.env.MIX_FRONTEND_URL ?? '';
+      let MIX_FRONTEND_URL = process.env.MIX_FRONTEND_URL ?? "";
 
       let urlPost = `${MIX_FRONTEND_URL}/halaman/${urlPath}`;
 
@@ -1063,5 +1057,4 @@ export default {
     },
   },
 };
-
 </script>

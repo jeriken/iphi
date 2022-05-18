@@ -1,3 +1,6 @@
-✨ feat(widget): add post widget
-✨ feat(widget): add comment widget
-✨ feat(widget): add category
+⚡ feat(kas): adding new CRUD "kas"
+♻️ refactor(kas): overiding kas controller
+♻️ refactor(kas): overiding kas pages
+🎨 style(kas): custom "browse" base code
+🎨 style(kas): custom "add" base code
+🎨 style(kas): custom "edit" base code

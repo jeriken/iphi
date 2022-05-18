@@ -26,5 +26,14 @@ class BadasoDeploymentOrchestratorSeeder extends Seeder
         $this->seed(HalamanCRUDDataDeleted::class);
         $this->seed(HalamanCRUDDataTypeAdded::class);
         $this->seed(HalamanCRUDDataRowAdded::class);
+        
+        
+        $this->seed(KasCRUDDataDeleted::class);
+        
+        
+        
+        
+        $this->seed(KasCRUDDataTypeAdded::class);
+        $this->seed(KasCRUDDataRowAdded::class);
     }
 }

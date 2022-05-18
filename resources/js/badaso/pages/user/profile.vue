@@ -161,6 +161,7 @@ export default {
         .then((response) => {
           this.$closeLoader();
           this.user = response.data.user;
+          console.log(this.user)
           this.user.additionalInfo = this.user.additionalInfo
             ? JSON.parse(this.user.additionalInfo)
             : "";
