@@ -119,11 +119,11 @@ class HalamanCRUDDataRowAdded extends Seeder
 "items": [
 {
 "label": "Terbit",
-"value": "terbit"
+"value": "Terbit"
 },
 {
-"label": "draft",
-"value": "draft"
+"label": "Draft",
+"value": "Draft"
 }
 ]
 }',

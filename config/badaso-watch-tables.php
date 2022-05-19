@@ -8,4 +8,5 @@ return [
     'badaso_tags',
     'badaso_users',
     'halaman',
+    'kas',
 ];

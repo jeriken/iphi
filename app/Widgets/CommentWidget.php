@@ -21,7 +21,7 @@ class CommentWidget implements WidgetInterface
     {
         return [
             'label' => 'Komentar',
-            'icon' => 'person',
+            'icon' => 'chat',
             'value' => Comment::count(),
         ];
     }

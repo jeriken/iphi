@@ -33,7 +33,7 @@ class HalamanCRUDDataTypeAdded extends Seeder
                 'slug' => 'halaman',
                 'display_name_singular' => 'Halaman',
                 'display_name_plural' => 'Halaman',
-                'icon' => NULL,
+                'icon' => 'layers',
                 'model_name' => NULL,
                 'policy_name' => NULL,
                 'controller' => 'App\\Http\\Controllers\\HalamanController',
@@ -48,7 +48,7 @@ class HalamanCRUDDataTypeAdded extends Seeder
                 'notification' => '[]',
                 'is_soft_delete' => false,
                 'created_at' => '2022-05-11T04:30:59.000000Z',
-                'updated_at' => '2022-05-15T05:31:10.000000Z',
+                'updated_at' => '2022-05-19T05:17:26.000000Z',
             ));
 
             Badaso::model('Permission')->generateFor('halaman');
@@ -66,7 +66,7 @@ class HalamanCRUDDataTypeAdded extends Seeder
                 $menu_item->fill([
                     'title' => 'Halaman',
                     'target' => '_self',
-                    'icon_class' => '',
+                    'icon_class' => 'layers',
                     'color' => null,
                     'parent_id' => null,
                     'permissions' => 'browse_halaman',
@@ -78,7 +78,7 @@ class HalamanCRUDDataTypeAdded extends Seeder
                 $menu_item->url = '/general/halaman';
                 $menu_item->title = 'Halaman';
                 $menu_item->target = '_self';
-                $menu_item->icon_class = '';
+                $menu_item->icon_class = 'layers';
                 $menu_item->color = null;
                 $menu_item->parent_id = null;
                 $menu_item->permissions = 'browse_halaman';

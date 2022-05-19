@@ -20,8 +20,8 @@ class CategoryWidget implements WidgetInterface
     public function run($params = null)
     {
         return [
-            'label' => 'Komentar',
-            'icon' => 'person',
+            'label' => 'Kategori',
+            'icon' => 'category',
             'value' => Category::count(),
         ];
     }

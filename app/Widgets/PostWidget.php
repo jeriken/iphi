@@ -21,7 +21,7 @@ class PostWidget implements WidgetInterface
     {
         return [
             'label' => 'Postingan',
-            'icon' => 'person',
+            'icon' => 'post_add',
             'value' => ModelsPost::count(),
         ];
     }

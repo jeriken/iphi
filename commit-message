@@ -1,3 +1,4 @@
-✨ feat(widget): add post widget
-✨ feat(widget): add comment widget
-✨ feat(widget): add category
+✨ fix(halaman): making slug autofill in edit page
+💚 ci(halaman): date is now using new format
+💚 ci(kas): date is now using new format
+💚 ci(kas): jumlah is now using new format

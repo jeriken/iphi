@@ -164,6 +164,12 @@ export default {
     this.requestObjectStoreData();
   },
   methods: {
+    syncSlug() {
+      let kebab = this.$helper
+        .generateSlug(this.dataType.dataRows[2].value)
+        .replaceAll("'", "");
+      this.dataType.dataRows[4].value = kebab;
+    },
     submitForm() {
       // init data row
       const dataRows = {};
