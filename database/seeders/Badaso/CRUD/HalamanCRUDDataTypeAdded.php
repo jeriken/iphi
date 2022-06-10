@@ -48,7 +48,7 @@ class HalamanCRUDDataTypeAdded extends Seeder
                 'notification' => '[]',
                 'is_soft_delete' => false,
                 'created_at' => '2022-05-11T04:30:59.000000Z',
-                'updated_at' => '2022-05-19T05:17:26.000000Z',
+                'updated_at' => '2022-06-10T16:48:48.000000Z',
             ));
 
             Badaso::model('Permission')->generateFor('halaman');

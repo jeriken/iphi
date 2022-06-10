@@ -141,8 +141,8 @@
                     <vs-td :data="rec.judul">
                       {{ rec.judul }}
                     </vs-td>
-                    <vs-td :data="rec.usersId">
-                      {{ rec.usersId }}
+                    <vs-td :data="rec.badasoUsers.name">
+                      {{ rec.badasoUsers.name }}
                     </vs-td>
                     <vs-td :data="rec.createdAt">
                       {{ date(rec.createdAt) }}
@@ -169,7 +169,7 @@
                               ) &&
                               !isShowDataRecycle
                             "
-                            icon="arrow_outward"
+                            icon="link"
                           >
                             View
                           </badaso-dropdown-item>

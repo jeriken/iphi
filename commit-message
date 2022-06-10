@@ -1,4 +1,2 @@
-✨ fix(halaman): making slug autofill in edit page
-💚 ci(halaman): date is now using new format
-💚 ci(kas): date is now using new format
-💚 ci(kas): jumlah is now using new format
+✨ fix(badaso): change from /badaso-dashboard to /admin
+

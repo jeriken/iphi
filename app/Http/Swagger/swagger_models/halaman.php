@@ -12,7 +12,7 @@
   *      @OA\Response(response=401, description="Unauthorized"),
   *      @OA\Response(response=402, description="Payment Required"),
   *      security={
-  *          {"bearerAuth": {}}
+  *          
   *      }
   * )
   *
@@ -38,7 +38,7 @@
   *      @OA\Response(response=401, description="Unauthorized"),
   *      @OA\Response(response=402, description="Payment Required"),
   *      security={
-  *          {"bearerAuth": {}}
+  *          
   *      }
   * )
   *
@@ -58,7 +58,7 @@
   *                 @OA\Property(
   *                     property="data",
   *                     type="object",
-  *                     example={"usersId":"Abc", "judul":"Abc", "konten":"Abc", "slug":"Abc", "status":"Abc"},
+  *                     example={"usersId":"", "judul":"Abc", "konten":"Abc", "slug":"Abc", "status":"Abc"},
   *                 ),
   *             )
   *         )
@@ -88,7 +88,7 @@
   *                 @OA\Property(
   *                     property="data",
   *                     type="object",
-  *                     example={"usersId":"Abc", "judul":"Abc", "konten":"Abc", "slug":"Abc", "status":"Abc"},
+  *                     example={"usersId":"", "judul":"Abc", "konten":"Abc", "slug":"Abc", "status":"Abc"},
   *                ),
   *             )
   *         )
@@ -201,7 +201,7 @@
   *                 @OA\Property(
   *                     property="data",
   *                     type="array",
-  *                     example={{"id":"123", "usersId":"Abc", "judul":"Abc", "konten":"Abc", "slug":"Abc", "status":"Abc", "createdAt":"2021-01-01T00:00:00.000Z", "updatedAt":"2021-01-01T00:00:00.000Z"}, {"id":"123", "usersId":"Abc", "judul":"Abc", "konten":"Abc", "slug":"Abc", "status":"Abc", "createdAt":"2021-01-01T00:00:00.000Z", "updatedAt":"2021-01-01T00:00:00.000Z"}},
+  *                     example={{"id":"123", "usersId":"", "judul":"Abc", "konten":"Abc", "slug":"Abc", "status":"Abc", "createdAt":"2021-01-01T00:00:00.000Z", "updatedAt":"2021-01-01T00:00:00.000Z"}, {"id":"123", "usersId":"", "judul":"Abc", "konten":"Abc", "slug":"Abc", "status":"Abc", "createdAt":"2021-01-01T00:00:00.000Z", "updatedAt":"2021-01-01T00:00:00.000Z"}},
   *                     @OA\Items(
   *                         type="object",
   *                         @OA\Property(type="integer", property="id"), 
