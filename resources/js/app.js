@@ -11,6 +11,11 @@ Vue.use(VueAxios, axios);
 
 import App from './App.vue';
 import Home from './pages/Home.vue';
+import Latest from './pages/LatestPost.vue';
+import Popular from './pages/PopularPost.vue';
+import DetailPost from './pages/DetailPost.vue';
+import DetailHalaman from './pages/DetailHalaman.vue';
+import Kas from './pages/LaporanKas.vue';
 
 const routes = [
     {
@@ -18,9 +23,34 @@ const routes = [
         component: Home
     },
     {
-        path: '/tes',
-        component: Home
-    }
+        path: '/berita',
+        component: Latest
+    },
+    {
+        path: '/berita/:id',
+        component: Latest
+    },
+    {
+        path: '/popular',
+        component: Popular
+    },
+    {
+        path: '/popular/:id',
+        component: Popular
+    },
+    {
+        path: '/posting/:id',
+        component: DetailPost
+    },
+    {
+        path: '/halaman/:id',
+        component: DetailHalaman
+    },
+    {
+        path: '/kas',
+        component: Kas
+    },
+
   ];
 
 const router = new VueRouter({ mode: 'history', routes: routes});

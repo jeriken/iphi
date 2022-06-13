@@ -14,12 +14,12 @@
 </style>
 
 <script>
-import header from "./components/Header.vue";
+import Header from "./components/Header.vue";
 import footer from "./components/Footer.vue";
 export default {
   name: "app",
   components: {
-      header,
+      Header,
       footer
   },
 };

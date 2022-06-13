@@ -21,7 +21,7 @@ export default {
   methods: {
     getPost() {
       try {
-        this.axios.get("/badaso-api/module/post/v1/post").then((response) => {
+        this.axios.get("/badaso-api/module/post/v1/post?limit=4").then((response) => {
           this.posts = response.data;
         });
       } catch (error) {}
