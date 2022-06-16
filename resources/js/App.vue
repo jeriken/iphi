@@ -3,9 +3,9 @@
 <template>
   <div id="app" class="container">
     <div>
-      <header></header>
+      <Header/>
       <router-view></router-view>
-      <footer></footer>
+      <Footer/>
     </div>
   </div>
 </template>
@@ -15,12 +15,13 @@
 
 <script>
 import Header from "./components/Header.vue";
-import footer from "./components/Footer.vue";
+import Footer from "./components/Footer.vue";
+
 export default {
   name: "app",
   components: {
       Header,
-      footer
+      Footer
   },
 };
 </script>

@@ -9,4 +9,5 @@ return [
     'badaso_users',
     'halaman',
     'kas',
+    'slider',
 ];

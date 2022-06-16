@@ -13,15 +13,21 @@ Sebuah project magang untuk website IPHI yang berisikan fitur-fitur seperti beri
 
 ## Demo
 
-[Frontend](iphiminomartani.org)
+[Frontend](https://iphiminomartani.org)
 
-[Dashboard](iphiminomartani.org)
+[Dashboard](https://iphiminomartani.org/admin)
 ( user: Admin
 pass: Admin )
 
 ## Feedback
 
 If you have any feedback, please reach out to us at mrazin777@gmail.com
+
+
+## Screenshots
+
+![Frontend](https://i.postimg.cc/Kv42GmKS/2.png)
+![Admin](https://i.postimg.cc/Df6vfCBs/1.png)
 
 
 ## License

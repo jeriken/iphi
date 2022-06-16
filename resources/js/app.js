@@ -1,6 +1,10 @@
 require('./bootstrap');
 
 import Vue from 'vue';
+import BootstrapVue from "bootstrap-vue"
+import "bootstrap-vue/dist/bootstrap-vue.css"
+import "../css/app.css"
+import "./custom"
 
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
@@ -11,8 +15,7 @@ Vue.use(VueAxios, axios);
 
 import App from './App.vue';
 import Home from './pages/Home.vue';
-import Latest from './pages/LatestPost.vue';
-import Popular from './pages/PopularPost.vue';
+import Berita from './pages/Berita.vue';
 import DetailPost from './pages/DetailPost.vue';
 import DetailHalaman from './pages/DetailHalaman.vue';
 import Kas from './pages/LaporanKas.vue';
@@ -24,19 +27,15 @@ const routes = [
     },
     {
         path: '/berita',
-        component: Latest
+        component: Berita
     },
     {
         path: '/berita/:id',
-        component: Latest
+        component: Berita
     },
     {
-        path: '/popular',
-        component: Popular
-    },
-    {
-        path: '/popular/:id',
-        component: Popular
+        path: '/berita/:id/:cat',
+        component: Berita
     },
     {
         path: '/posting/:id',
