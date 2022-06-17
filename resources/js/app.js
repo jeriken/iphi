@@ -2,16 +2,17 @@ require('./bootstrap');
 
 import Vue from 'vue';
 import BootstrapVue from "bootstrap-vue"
+import { SkeletonPlugin } from 'bootstrap-vue'
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import "../css/app.css"
 import "./custom"
-
 import VueRouter from 'vue-router';
-Vue.use(VueRouter);
-
 import VueAxios from 'vue-axios';
 import axios from 'axios';
+
+Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
+Vue.use(SkeletonPlugin)
 
 import App from './App.vue';
 import Home from './pages/Home.vue';

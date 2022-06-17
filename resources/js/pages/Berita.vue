@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <article class="d-flex justify-content-center">
       <div class="col-lg-10 col-sm-6 col-xs-12 text-center">
         <div class="card-body text-grey bg-white">
@@ -18,9 +18,9 @@
     </article>
     <!-- /.card -->
 
-    <main class="main pt-4">
+    <main class="main pt-5">
       <div class="container">
-        <div class="row">
+        <div class="row" v-if="posts.data">
           <div
             class="col-md-3"
             :data="rec"
@@ -35,7 +35,10 @@
                       {{ date(rec.createdAt) }}
                     </time></a
                   >
-                  di <a :href="getCatLink(rec.category.slug)"> {{ rec.category.title }} </a>
+                  di
+                  <a :href="getCatLink(rec.category.slug)">
+                    {{ rec.category.title }}
+                  </a>
                 </div>
                 <a :href="getPostLink(rec.slug)">
                   <h4 class="card-title">{{ rec.title }}</h4>
@@ -56,11 +59,35 @@
             <!-- /.card -->
           </div>
         </div>
+        <div v-if="isloadpost">
+          <div class="row">
+            <div class="col-md-3" :key="index" v-for="index in 4">
+              <article class="card mb-4">
+                <header class="card-header">
+                  <b-card>
+                    <b-skeleton width="60%"></b-skeleton>
+                    <b-skeleton width="100%"></b-skeleton>
+                    <b-skeleton width="90%"></b-skeleton>
+                  </b-card>
+                </header>
+                <b-skeleton-img></b-skeleton-img>
+                <div class="card-body">
+                  <b-card>
+                    <b-skeleton width="100%"></b-skeleton>
+                    <b-skeleton width="100%"></b-skeleton>
+                    <b-skeleton width="55%"></b-skeleton>
+                  </b-card>
+                  <b-skeleton width="60%"></b-skeleton>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <div class="pb-4">
       <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center" v-if="posts.data">
           <li
             class="page-item"
             :data="rec"
@@ -69,7 +96,9 @@
             :class="{ active: rec.active == true }"
             v-show="rec.label"
           >
-            <a class="page-link" :href="getPageLink(rec.label)"> {{ rec.label }} </a>
+            <a class="page-link" :href="getPageLink(rec.label)">
+              {{ rec.label }}
+            </a>
           </li>
         </ul>
       </nav>
@@ -83,10 +112,11 @@ export default {
   data() {
     return {
       posts: {},
+      isloadpost: true,
     };
   },
-  mounted() {
-    this.getPost(this.$route.params.id,this.$route.params.cat);
+  async mounted() {
+    await this.getPost(this.$route.params.id, this.$route.params.cat);
   },
   methods: {
     getPageLink(url) {
@@ -96,7 +126,7 @@ export default {
       return "/posting/" + url;
     },
     getCatLink(url) {
-      return "/berita/1/"+url;
+      return "/berita/1/" + url;
     },
     date(date) {
       var dateNew = new Date(date);
@@ -106,15 +136,20 @@ export default {
         year: "numeric",
       }).format(dateNew);
     },
-    getPost(page = 1, cat = "") {
+    async getPost(page = 1, cat = "") {
       try {
         this.axios
-          .get("/badaso-api/module/post/v1/post?limit=8&page=" + page + "&category=" + cat)
+          .get(
+            "/badaso-api/module/post/v1/post?limit=8&page=" +
+              page +
+              "&category=" +
+              cat
+          )
           .then((response) => {
             this.posts = response.data;
-            console.log(this.posts)
-            this.posts.data.posts.links.splice(0,1);
-            this.posts.data.posts.links.splice(-1,1);
+            this.posts.data.posts.links.splice(0, 1);
+            this.posts.data.posts.links.splice(-1, 1);
+            this.isloadpost = false;
           });
       } catch (error) {}
     },

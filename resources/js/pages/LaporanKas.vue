@@ -12,8 +12,7 @@
                     <h4 class="card-title pb-4">Laporan Dana Kas</h4>
                   </header>
 
-                  <table class="table table-hover"
-                        v-if="kas.data">
+                  <table class="table table-hover" v-if="kas.data">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -35,10 +34,18 @@
                         <td v-else>-</td>
                         <td v-if="rec.jumlah < 0">{{ cv(rec.jumlah) }}</td>
                         <td v-else>-</td>
-                        <td><i>{{ cv(rec.total) }}</i></td>
+                        <td>
+                          <i>{{ cv(rec.total) }}</i>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
+                  <b-skeleton-table
+                    :rows="5"
+                    :columns="5"
+                    :table-props="{ bordered: true, striped: true }"
+                    v-if="isloadkas"
+                  ></b-skeleton-table>
                 </div>
               </div>
             </div>
@@ -56,11 +63,12 @@ export default {
   data() {
     return {
       kas: {},
+      isloadkas: true,
       jumlah: 0,
     };
   },
-  mounted() {
-    this.getKas();
+  async mounted() {
+    await this.getKas();
   },
   methods: {
     jumlahKas(kas) {
@@ -83,17 +91,18 @@ export default {
         year: "numeric",
       }).format(dateNew);
     },
-    getKas() {
+    async getKas() {
       try {
         this.axios.get("/badaso-api/v1/entities/kas").then((response) => {
           this.kas = response.data;
+          this.isloadkas = false;
         });
       } catch (error) {}
     },
   },
   computed: {
     countedList() {
-      console.log(this.kas)
+      console.log(this.kas);
       if (this.kas.data.data == undefined) return [];
       let totalNow = 0;
       return this.kas.data.data.map((value) => {

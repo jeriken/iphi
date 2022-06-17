@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9">
-          <article class="card mb-4">
+          <article class="card mb-4" v-if="posts.data">
             <header class="card-header text-center">
               <div class="card-meta">
                 <a href="#"
@@ -13,7 +13,10 @@
                     >{{ date(posts.data.post.createdAt) }}</time
                   ></a
                 >
-                di <a :href="getCatLink(posts.data.post.category.slug)">{{ posts.data.post.category.title }}</a>
+                di
+                <a :href="getCatLink(posts.data.post.category.slug)">{{
+                  posts.data.post.category.title
+                }}</a>
               </div>
               <a href="#">
                 <h1 class="card-title">{{ posts.data.post.title }}</h1>
@@ -27,6 +30,29 @@
               <hr />
             </div>
           </article>
+          <article class="card mb-4" v-if="isloadpost">
+              <b-skeleton animation="wave" width="20%"></b-skeleton>
+            <h1 class="card-title">
+              <b-card>
+                <b-skeleton animation="wave" width="80%" height="1.6rem"></b-skeleton>
+                <b-skeleton animation="wave" width="40%" height="1.6rem"></b-skeleton>
+              </b-card>
+            </h1>
+            <b-skeleton-img></b-skeleton-img>
+            <div class="card-body">
+              <b-card>
+                <b-skeleton animation="wave" width="85%"></b-skeleton>
+                <b-skeleton animation="wave" width="55%"></b-skeleton>
+                <b-skeleton animation="wave" width="70%"></b-skeleton>
+              </b-card>
+              <br />
+              <b-card>
+                <b-skeleton animation="wave" width="85%"></b-skeleton>
+                <b-skeleton animation="wave" width="55%"></b-skeleton>
+                <b-skeleton animation="wave" width="70%"></b-skeleton>
+              </b-card>
+            </div>
+          </article>
           <!-- /.card -->
         </div>
         <div class="col-md-3 ms-auto">
@@ -34,7 +60,16 @@
             <div class="card mb-4 card-outline">
               <div class="card-body">
                 <h4 class="card-title">Kilasan</h4>
-                <p class="card-text">{{ posts.data.post.summary }}</p>
+                <p class="card-text" v-if="posts.data">
+                  {{ posts.data.post.summary }}
+                </p>
+                <p v-if="isloadpost">
+                  <b-card>
+                    <b-skeleton animation="wave" width="85%"></b-skeleton>
+                    <b-skeleton animation="wave" width="55%"></b-skeleton>
+                    <b-skeleton animation="wave" width="70%"></b-skeleton>
+                  </b-card>
+                </p>
               </div>
             </div>
             <!-- /.card -->
@@ -44,6 +79,7 @@
             <div class="card card-outline mb-4">
               <div class="card-body">
                 <h4 class="card-title">Tags</h4>
+                <div v-if="posts.data">
                 <a
                   :data="rec"
                   :key="index"
@@ -53,28 +89,12 @@
                 >
                   {{ rec.title }}
                 </a>
-              </div>
-            </div>
-            <!-- /.card -->
-            <div class="card card-outline mb-4">
-              <div class="card-body">
-                <h4 class="card-title">Populer</h4>
-                <div
-                  :data="pop"
-                  :key="index"
-                  v-for="(pop, index) in popular.data.posts"
-                  class="p-2"
-                >
-                  <a href="post-image.html" class="d-inline-block">
-                    <h4 class="h6">{{ pop.title }}</h4>
-                    <img class="card-img" :src="pop.thumbnail" alt="" />
-                  </a>
-                  
-                  <hr/>
                 </div>
+                <a v-if="isloadpost"><b-skeleton type="input"></b-skeleton></a>
               </div>
             </div>
             <!-- /.card -->
+            <Populer />
           </aside>
         </div>
       </div>
@@ -83,17 +103,20 @@
 </template>
 
 <script>
+import Populer from "../components/Populer.vue";
 export default {
   name: "Home",
   data() {
     return {
       posts: {},
-      popular: {},
+      isloadpost: true,
     };
   },
-  mounted() {
-    this.getPost(this.$route.params.id);
-    this.getPopular();
+  components: {
+    Populer,
+  },
+  async mounted() {
+    await this.getPost(this.$route.params.id);
   },
   methods: {
     removeLink(url) {
@@ -105,7 +128,7 @@ export default {
       return "/posting/" + url;
     },
     getCatLink(url) {
-      return "/berita/1/"+url;
+      return "/berita/1/" + url;
     },
     cv(num) {
       num = new Intl.NumberFormat("id-ID", {
@@ -123,21 +146,13 @@ export default {
         year: "numeric",
       }).format(dateNew);
     },
-    getPost(slug) {
+    async getPost(slug) {
       try {
         this.axios
           .get("/badaso-api/module/post/v1/post/read-slug?slug=" + slug)
           .then((response) => {
             this.posts = response.data;
-          });
-      } catch (error) {}
-    },
-    getPopular() {
-      try {
-        this.axios
-          .get("/badaso-api/module/post/v1/post/popular?limit=2")
-          .then((response) => {
-            this.popular = response.data;
+            this.isloadpost = false;
           });
       } catch (error) {}
     },

@@ -2,7 +2,7 @@
   <div id="app">
     <!-- Div Slider -->
     <article class="card card-outline mb-4">
-      <div class="card-body">
+      <div class="card-body" v-if="slider.data">
         <div
           id="carouselExampleCaptions"
           class="carousel slide"
@@ -56,6 +56,9 @@
           </a>
         </div>
       </div>
+      <div v-if="isloadslider">
+        <b-skeleton-img></b-skeleton-img>
+      </div>
     </article>
     <!-- /.card -->
 
@@ -71,7 +74,7 @@
                     <h4 class="card-title">Laporan Dana Kas</h4>
                   </header>
 
-                  <table class="table table-hover">
+                  <table class="table table-hover" v-if="kas.data">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -91,11 +94,25 @@
                       </tr>
                     </tbody>
                   </table>
+                  <div v-if="isloadkas">
+                    <b-skeleton-table
+                      :rows="5"
+                      :columns="3"
+                      :table-props="{ bordered: true, striped: true }"
+                      v-if="isloadkas"
+                    ></b-skeleton-table>
+                  </div>
                 </div>
               </div>
               <div class="col-lg-4">
                 <h5 class="card-title m-4">Jumlah Saldo</h5>
-                <h3 class="pb-2">{{ cv(jumlah.data[0].jumlah) }}</h3>
+                <h3 class="pb-2" v-if="jumlah.data">
+                  {{ cv(jumlah.data[0].jumlah) }}
+                </h3>
+                <b-card v-if="isloadjumlah">
+                  <b-skeleton type="input"></b-skeleton>
+                  <br>
+                </b-card>
                 <div class="bg-primary text-white p-4">
                   Bank BRI<br />
                   Kode: 19106050024<br />
@@ -122,7 +139,7 @@
 
     <main class="main pt-4">
       <div class="container">
-        <div class="row">
+        <div class="row" v-if="posts.data">
           <div
             class="col-md-3"
             :data="rec"
@@ -161,6 +178,30 @@
             <!-- /.card -->
           </div>
         </div>
+        <div v-if="isloadposts">
+          <div class="row">
+            <div class="col-md-3" :key="index" v-for="index in 4">
+              <article class="card mb-4">
+                <header class="card-header">
+                  <b-card>
+                    <b-skeleton width="60%"></b-skeleton>
+                    <b-skeleton width="100%"></b-skeleton>
+                    <b-skeleton width="90%"></b-skeleton>
+                  </b-card>
+                </header>
+                <b-skeleton-img></b-skeleton-img>
+                <div class="card-body">
+                  <b-card>
+                    <b-skeleton width="100%"></b-skeleton>
+                    <b-skeleton width="100%"></b-skeleton>
+                    <b-skeleton width="55%"></b-skeleton>
+                  </b-card>
+                  <b-skeleton width="60%"></b-skeleton>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   </div>
@@ -172,18 +213,20 @@ export default {
   data() {
     return {
       slider: {},
+      isloadslider: true,
       kas: {},
+      isloadkas: true,
       jumlah: {},
+      isloadjumlah: true,
       posts: {},
-      popular: {},
+      isloadposts: true,
     };
   },
-  mounted() {
-    this.getSlider();
-    this.getKas();
-    this.jumlahKas();
-    this.getPost();
-    this.getPopular();
+  async mounted() {
+    await this.getSlider();
+    await this.getKas();
+    await this.jumlahKas();
+    await this.getPost();
   },
   methods: {
     removeLink(url) {
@@ -213,42 +256,37 @@ export default {
         year: "numeric",
       }).format(dateNew);
     },
-    getSlider() {
+    async getSlider() {
       try {
         this.axios.get("/badaso-api/v1/entities/slider").then((response) => {
           this.slider = response.data;
+          this.isloadslider = false;
         });
       } catch (error) {}
     },
-    getKas() {
+    async getKas() {
       try {
         this.axios.get("/badaso-api/v1/entities/kas").then((response) => {
           this.kas = response.data;
+          this.isloadkas = false;
         });
       } catch (error) {}
     },
-    jumlahKas() {
+    async jumlahKas() {
       try {
         this.axios.get("/api/kas/jumlah").then((response) => {
           this.jumlah = response.data;
+          this.isloadjumlah = false;
         });
       } catch (error) {}
     },
-    getPost() {
+    async getPost() {
       try {
         this.axios
           .get("/badaso-api/module/post/v1/post?limit=8")
           .then((response) => {
             this.posts = response.data;
-          });
-      } catch (error) {}
-    },
-    getPopular() {
-      try {
-        this.axios
-          .get("/badaso-api/module/post/v1/post/popular?limit=4")
-          .then((response) => {
-            this.popular = response.data;
+            this.isloadposts = false;
           });
       } catch (error) {}
     },
