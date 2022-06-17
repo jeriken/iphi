@@ -9,10 +9,15 @@ import "./custom"
 import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
+import VuePageTitle from 'vue-page-title';
 
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
-Vue.use(SkeletonPlugin)
+Vue.use(SkeletonPlugin);
+Vue.use(VuePageTitle, {
+    // prefix: 'My App - ',
+    suffix: '| IPHI '
+  });
 
 import App from './App.vue';
 import Home from './pages/Home.vue';

@@ -209,6 +209,7 @@
 
 <script>
 export default {
+  title:"Beranda",
   name: "Home",
   data() {
     return {

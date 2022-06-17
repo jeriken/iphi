@@ -72,6 +72,7 @@
 <script>
 import Populer from "../components/Populer.vue";
 export default {
+  title: "Halaman",
   name: "Home",
   data() {
     return {
@@ -84,6 +85,9 @@ export default {
   },
   async mounted() {
     await this.getPost(this.$route.params.id);
+  },
+  updated() {
+    this.$title = this.posts.data.judul;
   },
   methods: {
     removeLink(url) {

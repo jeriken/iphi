@@ -2878,11 +2878,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  title: "Semua",
   name: "latest",
   data: function data() {
     return {
       posts: {},
-      isloadpost: true
+      isloadpost: true,
+      title: "Semua"
     };
   },
   mounted: function mounted() {
@@ -2903,6 +2905,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       }, _callee);
     }))();
+  },
+  updated: function updated() {
+    if (this.posts.data.posts.data[0].category.title) {
+      this.$title = this.posts.data.posts.data[0].category.title;
+      this.title = this.posts.data.posts.data[0].category.title;
+    }
   },
   methods: {
     getPageLink: function getPageLink(url) {
@@ -3053,6 +3061,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  title: "Halaman",
   name: "Home",
   data: function data() {
     return {
@@ -3081,6 +3090,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       }, _callee);
     }))();
+  },
+  updated: function updated() {
+    this.$title = this.posts.data.judul;
   },
   methods: {
     removeLink: function removeLink(url) {
@@ -3258,8 +3270,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  title: "Postingan",
   name: "Home",
   data: function data() {
     return {
@@ -3288,6 +3309,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       }, _callee);
     }))();
+  },
+  updated: function updated() {
+    this.$title = this.posts.data.post.title;
   },
   methods: {
     removeLink: function removeLink(url) {
@@ -3573,6 +3597,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  title: "Beranda",
   name: "Home",
   data: function data() {
     return {
@@ -3820,6 +3845,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  title: "Kas",
   name: "Home",
   data: function data() {
     return {
@@ -3918,22 +3944,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/components/skeleton/index.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/components/skeleton/index.js");
 /* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue/dist/bootstrap-vue.css */ "./node_modules/bootstrap-vue/dist/bootstrap-vue.css");
 /* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/app.css */ "./resources/css/app.css");
 /* harmony import */ var _custom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./custom */ "./resources/js/custom.js");
 /* harmony import */ var _custom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_custom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.esm.min.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
-/* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue");
-/* harmony import */ var _pages_Berita_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/Berita.vue */ "./resources/js/pages/Berita.vue");
-/* harmony import */ var _pages_DetailPost_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/DetailPost.vue */ "./resources/js/pages/DetailPost.vue");
-/* harmony import */ var _pages_DetailHalaman_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/DetailHalaman.vue */ "./resources/js/pages/DetailHalaman.vue");
-/* harmony import */ var _pages_LaporanKas_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/LaporanKas.vue */ "./resources/js/pages/LaporanKas.vue");
+/* harmony import */ var vue_page_title__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-page-title */ "./node_modules/vue-page-title/dist/index.es.js");
+/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
+/* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue");
+/* harmony import */ var _pages_Berita_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/Berita.vue */ "./resources/js/pages/Berita.vue");
+/* harmony import */ var _pages_DetailPost_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/DetailPost.vue */ "./resources/js/pages/DetailPost.vue");
+/* harmony import */ var _pages_DetailHalaman_vue__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/DetailHalaman.vue */ "./resources/js/pages/DetailHalaman.vue");
+/* harmony import */ var _pages_LaporanKas_vue__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pages/LaporanKas.vue */ "./resources/js/pages/LaporanKas.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -3945,9 +3972,14 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_5__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_5__["default"].use(vue_axios__WEBPACK_IMPORTED_MODULE_3__["default"], (axios__WEBPACK_IMPORTED_MODULE_4___default()));
-vue__WEBPACK_IMPORTED_MODULE_5__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_7__.SkeletonPlugin);
+
+vue__WEBPACK_IMPORTED_MODULE_6__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_6__["default"].use(vue_axios__WEBPACK_IMPORTED_MODULE_3__["default"], (axios__WEBPACK_IMPORTED_MODULE_4___default()));
+vue__WEBPACK_IMPORTED_MODULE_6__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_8__.SkeletonPlugin);
+vue__WEBPACK_IMPORTED_MODULE_6__["default"].use(vue_page_title__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  // prefix: 'My App - ',
+  suffix: '| IPHI '
+});
 
 
 
@@ -3956,33 +3988,33 @@ vue__WEBPACK_IMPORTED_MODULE_5__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_
 
 var routes = [{
   path: '/',
-  component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+  component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
 }, {
   path: '/berita',
-  component: _pages_Berita_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
+  component: _pages_Berita_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
 }, {
   path: '/berita/:id',
-  component: _pages_Berita_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
+  component: _pages_Berita_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
 }, {
   path: '/berita/:id/:cat',
-  component: _pages_Berita_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
+  component: _pages_Berita_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
 }, {
   path: '/posting/:id',
-  component: _pages_DetailPost_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
+  component: _pages_DetailPost_vue__WEBPACK_IMPORTED_MODULE_12__["default"]
 }, {
   path: '/halaman/:id',
-  component: _pages_DetailHalaman_vue__WEBPACK_IMPORTED_MODULE_12__["default"]
+  component: _pages_DetailHalaman_vue__WEBPACK_IMPORTED_MODULE_13__["default"]
 }, {
   path: '/kas',
-  component: _pages_LaporanKas_vue__WEBPACK_IMPORTED_MODULE_13__["default"]
+  component: _pages_LaporanKas_vue__WEBPACK_IMPORTED_MODULE_14__["default"]
 }];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]({
   mode: 'history',
   routes: routes
 });
-new vue__WEBPACK_IMPORTED_MODULE_5__["default"](vue__WEBPACK_IMPORTED_MODULE_5__["default"].util.extend({
+new vue__WEBPACK_IMPORTED_MODULE_6__["default"](vue__WEBPACK_IMPORTED_MODULE_6__["default"].util.extend({
   router: router
-}, _App_vue__WEBPACK_IMPORTED_MODULE_8__["default"])).$mount('#app');
+}, _App_vue__WEBPACK_IMPORTED_MODULE_9__["default"])).$mount('#app');
 
 /***/ }),
 
@@ -32120,7 +32152,28 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("article", { staticClass: "d-flex justify-content-center" }, [
+      _c("div", { staticClass: "col-lg-10 col-sm-6 col-xs-12 text-center" }, [
+        _c("div", { staticClass: "card-body text-grey bg-white" }, [
+          _c("header", [
+            _c("div", { staticClass: "m-8" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-secondary text-dark p-6",
+                  attrs: { type: "button" },
+                },
+                [
+                  _vm._v(
+                    "\n              " + _vm._s(_vm.title) + "\n            "
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
     _vm._v(" "),
     _c("main", { staticClass: "main pt-5" }, [
       _c("div", { staticClass: "container" }, [
@@ -32320,31 +32373,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("article", { staticClass: "d-flex justify-content-center" }, [
-      _c("div", { staticClass: "col-lg-10 col-sm-6 col-xs-12 text-center" }, [
-        _c("div", { staticClass: "card-body text-grey bg-white" }, [
-          _c("header", [
-            _c("div", { staticClass: "m-8" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-secondary text-dark p-6",
-                  attrs: { type: "button" },
-                },
-                [_vm._v("\n              Berita\n            ")]
-              ),
-            ]),
-          ]),
-        ]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -32759,9 +32788,9 @@ var render = function () {
                             },
                             [
                               _vm._v(
-                                "\n                " +
+                                "\n                  " +
                                   _vm._s(rec.title) +
-                                  "\n              "
+                                  "\n                "
                               ),
                             ]
                           )
@@ -33507,6 +33536,161 @@ function normalizeComponent (
     options: options
   }
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-page-title/dist/index.es.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vue-page-title/dist/index.es.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ VuePageTitle),
+/* harmony export */   "install": () => (/* binding */ install)
+/* harmony export */ });
+/*! vue-page-title v1.2.10
+ * Vue.js html/page title manager
+ * https://github.com/vinicius73/vue-page-title
+ * (c) 2018-2022 Vinicius Reis <luiz.vinicius73@gmail.com>
+ */
+
+/**
+ * test if object is a function
+ * @method isFunction
+ * @param  {any}      object
+ * @return {Boolean}
+ */
+const isFunction = object => typeof (object) === 'function';
+
+/**
+ * prevent output undefined
+ * @method safeString
+ * @param  {String}   st
+ * @return {String}
+ */
+const safeString = st => st || '';
+
+/**
+ * build a full title white suffix and prefix
+ * @method buildPageTitle
+ * @param  {String}       value
+ * @param  {Object}       [options={ suffix, prefix }]
+ * @return {String}       full title
+ */
+const buildPageTitle = (value, options) => {
+  const { prefix, suffix } = options;
+
+  return `${safeString(prefix)} ${value} ${safeString(suffix)}`.trim()
+};
+
+const pageTitleMixin = {
+  created () {
+    const { title } = this.$options;
+
+    if (title !== undefined) {
+      // allow use dinamic title system
+      this.$title = isFunction(title)
+        ? title.call(this, this)
+        : title;
+    }
+  }
+};
+
+/**
+ * if use ssr document is not available
+ * @method isBrowser
+ * @return {Boolean}
+ */
+const isBrowser = () => (typeof document !== 'undefined');
+
+/**
+ * update document.title
+ * @method setPageTitle
+ * @param  {String}     value new title
+ * @param  {Object}     options buildPageTitle options
+ * @return {void}
+ */
+const setPageTitle = (value, options) => {
+  // test if not is a browser
+  /* istanbul ignore next: SSR */
+  if (!isBrowser()) {
+    console.warn('no browser enviroment');
+    return
+  }
+
+  // test if title is empty
+  if (safeString(value).length > 0) {
+    const { setTitleMethod } = options;
+    const title = buildPageTitle(value, options);
+
+    // use custom setTitle method
+    if (setTitleMethod && isFunction(setTitleMethod)) {
+      setTitleMethod(title);
+      return
+    }
+
+    document.title = title;
+  }
+};
+
+/**
+ * @method setup
+ * @param  {Function}   setTitle    setTitle callback
+ * @param  {Object}     options     { router: RouterInstance }
+ * @return {void}
+ */
+const setup = (setTitle, { router }) => {
+  router.afterEach((to, from) => {
+    const { meta } = to;
+
+    // if has meta and title
+    if (meta && meta.title) {
+      setTitle(meta.title);
+    }
+  });
+};
+
+const install = (Vue, options = {}) => {
+  // prevent double install
+  /* istanbul ignore next */
+  if (install.installed) return
+  install.installed = true;
+
+  // title state
+  const $page = {
+    title: ''
+  };
+
+  const setTitle = value => {
+    setPageTitle(value, options);
+    $page.title = value;
+  };
+
+  // make reactive title
+  Vue.util.defineReactive($page, 'title', '');
+
+  // add title to component context
+  Object.defineProperty(Vue.prototype, '$title', {
+    get: () => $page.title,
+    set: value => setTitle(value)
+  });
+
+  // vue router support
+  if (options.router) {
+    setup(setTitle, options);
+  }
+
+  // add global mixin
+  Vue.mixin(pageTitleMixin);
+};
+
+const VuePageTitle = { install };
+
+
 
 
 /***/ }),

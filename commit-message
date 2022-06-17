@@ -1,7 +1,1 @@
-✨ feat(api): adding custom api for jumlahkas
-👷 build(vue) : adding bootstrap-vue
-🎨 style(post): change berita and detail pages
-🎨 style(kas): change view pages
-🎨 style(halaman): change view pages
-🎨 style(home): change home view
-📝 docs(readme): readme update
+✨ feat(vue): adding new dynamic header title

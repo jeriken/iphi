@@ -31,11 +31,19 @@
             </div>
           </article>
           <article class="card mb-4" v-if="isloadpost">
-              <b-skeleton animation="wave" width="20%"></b-skeleton>
+            <b-skeleton animation="wave" width="20%"></b-skeleton>
             <h1 class="card-title">
               <b-card>
-                <b-skeleton animation="wave" width="80%" height="1.6rem"></b-skeleton>
-                <b-skeleton animation="wave" width="40%" height="1.6rem"></b-skeleton>
+                <b-skeleton
+                  animation="wave"
+                  width="80%"
+                  height="1.6rem"
+                ></b-skeleton>
+                <b-skeleton
+                  animation="wave"
+                  width="40%"
+                  height="1.6rem"
+                ></b-skeleton>
               </b-card>
             </h1>
             <b-skeleton-img></b-skeleton-img>
@@ -80,15 +88,15 @@
               <div class="card-body">
                 <h4 class="card-title">Tags</h4>
                 <div v-if="posts.data">
-                <a
-                  :data="rec"
-                  :key="index"
-                  v-for="(rec, index) in posts.data.post.tags"
-                  class="btn btn-light btn-sm mb-1"
-                  href="#"
-                >
-                  {{ rec.title }}
-                </a>
+                  <a
+                    :data="rec"
+                    :key="index"
+                    v-for="(rec, index) in posts.data.post.tags"
+                    class="btn btn-light btn-sm mb-1"
+                    href="#"
+                  >
+                    {{ rec.title }}
+                  </a>
                 </div>
                 <a v-if="isloadpost"><b-skeleton type="input"></b-skeleton></a>
               </div>
@@ -105,6 +113,7 @@
 <script>
 import Populer from "../components/Populer.vue";
 export default {
+  title: "Postingan",
   name: "Home",
   data() {
     return {
@@ -117,6 +126,9 @@ export default {
   },
   async mounted() {
     await this.getPost(this.$route.params.id);
+  },
+  updated() {
+    this.$title = this.posts.data.post.title;
   },
   methods: {
     removeLink(url) {

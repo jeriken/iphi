@@ -9,7 +9,7 @@
                 type="button"
                 class="btn btn-outline-secondary text-dark p-6"
               >
-                Berita
+                {{ title }}
               </button>
             </div>
           </header>
@@ -108,15 +108,23 @@
 
 <script>
 export default {
+  title: "Semua",
   name: "latest",
   data() {
     return {
       posts: {},
       isloadpost: true,
+      title: "Semua",
     };
   },
   async mounted() {
     await this.getPost(this.$route.params.id, this.$route.params.cat);
+  },
+  updated() {
+    if(this.posts.data.posts.data[0].category.title){
+      this.$title = this.posts.data.posts.data[0].category.title;
+      this.title = this.posts.data.posts.data[0].category.title;
+    }
   },
   methods: {
     getPageLink(url) {

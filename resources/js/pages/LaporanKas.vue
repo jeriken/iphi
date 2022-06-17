@@ -59,6 +59,7 @@
 
 <script>
 export default {
+  title: "Kas",
   name: "Home",
   data() {
     return {
